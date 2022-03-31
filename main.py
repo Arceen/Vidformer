@@ -15,7 +15,7 @@ def listdirs(rootdir):
                 # print(d)
                 
                 cap = cv2.VideoCapture(d)
-                fps = cap.get(cv2.CAP_PROP_FPS)      # OpenCV2 version 2 used "CV_CAP_PROP_FPS"
+                fps = cap.get(cv2.CAP_PROP_FPS)
                 frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
                 this_video_duration = frame_count/fps
                 
@@ -23,10 +23,17 @@ def listdirs(rootdir):
                 vidcount+=1
 
                 cap.release()
+    print("Folder Name: ", rootdir)
+    print("Video Count: ", str(vidcount))
+    print("Duration: "+ str(int(durationinsecs/3600))+" hrs, "+str(int((durationinsecs%3600)/60)) +" mins, "+ str(int(durationinsecs%60)) +" secs")
     return [vidcount, durationinsecs]
 
  
-rootdir = 'C:\\Users\\Niloy\\Downloads\\Drawing Tutorials\\Digital Painting\\Painting With Confidence – COURSE by Anthony Jones'
+rootdir = 'C:\\Users\\Niloy\\Downloads\\Drawing Tutorials\\Color, Light, Shadow & Shading\\CGMA The art of colour and light with Marco Bucci'
 [vc, dur] = listdirs(rootdir)
 print("Number of videos : "+ str(vc))
 print("Duration: "+ str(int(dur/3600))+" hrs, "+str(int((dur%3600)/60)) +" mins, "+ str(int(dur%60)) +" secs")
+
+# Output
+# Number of videos : 38
+# Duration: 5 hrs, 36 mins, 14 secs
